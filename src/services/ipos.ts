@@ -39,15 +39,15 @@ export function formatIpoMessage(ipos: any[]) {
     const issueSizeNum = safeNumber(ipo.issueSize);
     const issueSizeCr =
       issueSizeNum !== "N/A"
-        ? (issueSizeNum / 1e7).toFixed(2) + " Cr shares"
+        ? ((issueSizeNum as number) / 1e7).toFixed(2) + " Cr shares"
         : "N/A";
 
     const subscriptionNum = safeNumber(ipo.noOfTime);
     const subscription =
-      subscriptionNum !== "N/A" ? `${subscriptionNum.toFixed(2)}×` : "N/A";
+      subscriptionNum !== "N/A" ? `${(subscriptionNum as number).toFixed(2)}×` : "N/A";
 
     const statusEmoji =
-      subscriptionNum !== "N/A" && subscriptionNum >= 1 ? "🔥" : "🟡";
+      typeof subscriptionNum === "number" && subscriptionNum >= 1 ? "🔥" : "🟡";
 
     message +=
       `${statusEmoji} *${companyName}*\n` +
