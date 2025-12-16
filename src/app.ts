@@ -18,8 +18,8 @@ app.get("/ipo-updates", async (req: Request, res: Response) => {
   res.json({ success: true });
 });
 
-const PORT = process.env.port || 3001;
+const PORT = Number(process.env.PORT) || 3001;
 
-app.listen(PORT, () => {
-  console.log(`Server running in port = ${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
 });
